@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/planting/planting",
+    "pages/crops/crops",
+    "pages/settings/settings"
+  ],
+  "window": {
+    "navigationBarTitleText": "星露花时",
+    "navigationBarBackgroundColor": "#f7f1e8",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f7f1e8"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#8c6f76",
+    "selectedColor": "#4d7c54",
+    "backgroundColor": "#fff3eb",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "农场"
+      },
+      {
+        "pagePath": "pages/planting/planting",
+        "text": "种植"
+      },
+      {
+        "pagePath": "pages/crops/crops",
+        "text": "作物"
+      },
+      {
+        "pagePath": "pages/settings/settings",
+        "text": "设置"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

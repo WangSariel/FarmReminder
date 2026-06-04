@@ -1,0 +1,47 @@
+<view class="page has-custom-tabbar">
+  <view class="section">
+    <view class="title">新建任务</view>
+    <view class="subtitle">种植和加工都默认使用当前手机时间，除非手动调整。</view>
+  </view>
+
+  <view class="mode-tabs section">
+    <view class="{{mode === 'planting' ? 'mode-tab active' : 'mode-tab'}}" data-mode="planting" bindtap="setMode">种植</view>
+    <view class="{{mode === 'processing' ? 'mode-tab active' : 'mode-tab'}}" data-mode="processing" bindtap="setMode">加工</view>
+  </view>
+
+  <view class="card section">
+    <block wx:if="{{mode === 'planting'}}">
+      <label class="label">植物类别</label>
+      <picker range="{{categories}}" value="{{categoryIndex}}" bindchange="onCategoryChange">
+        <view>{{categories[categoryIndex]}}</view>
+      </picker>
+
+      <label class="label">作物</label>
+      <picker range="{{cropNames}}" value="{{cropIndex}}" bindchange="onCropChange">
+        <view>{{cropNames[cropIndex]}}</view>
+      </picker>
+    </block>
+
+    <block wx:else>
+      <label class="label">加工物</label>
+      <picker range="{{processItemNames}}" value="{{processItemIndex}}" bindchange="onProcessItemChange">
+        <view>{{processItemNames[processItemIndex]}}</view>
+      </picker>
+    </block>
+
+    <label class="label">开始日期</label>
+    <picker mode="date" value="{{date}}" bindchange="onDateChange">
+      <view>{{date}}</view>
+    </picker>
+
+    <label class="label">开始时间</label>
+    <picker mode="time" value="{{time}}" bindchange="onTimeChange">
+      <view>{{time}}</view>
+    </picker>
+
+    <label class="label">{{mode === 'planting' ? '成熟提醒' : '加工完成提醒'}}</label>
+    <switch checked="{{remind}}" bindchange="onRemindChange" />
+
+    <button class="primary submit" bindtap="createTask">{{mode === 'planting' ? '创建种植任务' : '创建加工任务'}}</button>
+  </view>
+</view>

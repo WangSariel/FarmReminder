@@ -1,0 +1,14 @@
+.submit {
+  margin-top: 32rpx;
+}
+
+.crop-name {
+  font-size: 32rpx;
+  font-weight: 700;
+}
+
+.list-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+}

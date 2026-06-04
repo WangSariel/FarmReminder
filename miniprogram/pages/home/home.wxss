@@ -1,0 +1,150 @@
+.small-title {
+  font-size: 32rpx;
+}
+
+.farm-hero {
+  position: relative;
+  min-height: 162rpx;
+  overflow: hidden;
+  border: 1rpx solid #efd4d3;
+  border-radius: 8rpx;
+  padding: 22rpx 24rpx;
+  box-sizing: border-box;
+  background:
+    linear-gradient(135deg, rgba(255, 250, 242, 0.9), rgba(247, 223, 227, 0.78)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.24) 0, rgba(255, 255, 255, 0.24) 24rpx, transparent 24rpx, transparent 48rpx);
+  box-shadow: 0 12rpx 30rpx rgba(144, 105, 91, 0.12);
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  width: 76%;
+}
+
+.hero-copy .title {
+  margin-bottom: 6rpx;
+  color: #4d7c54;
+  font-size: 34rpx;
+}
+
+.hero-copy .subtitle {
+  margin-top: 2rpx;
+  color: #6f6158;
+  font-size: 23rpx;
+}
+
+.hero-refresh {
+  position: absolute;
+  top: 18rpx;
+  right: 18rpx;
+  z-index: 3;
+  min-width: 112rpx;
+  background: rgba(255, 250, 242, 0.78);
+  color: #4d7c54;
+  border: 1rpx solid #8fb996;
+}
+
+.hero-cloud {
+  position: absolute;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.cloud-a {
+  top: 16rpx;
+  left: 220rpx;
+  width: 80rpx;
+  height: 30rpx;
+}
+
+.hero-house {
+  position: absolute;
+  right: 46rpx;
+  bottom: 34rpx;
+  width: 92rpx;
+  height: 78rpx;
+}
+
+.roof {
+  width: 0;
+  height: 0;
+  margin-left: 6rpx;
+  border-left: 40rpx solid transparent;
+  border-right: 40rpx solid transparent;
+  border-bottom: 36rpx solid #c78379;
+}
+
+.house-body {
+  width: 76rpx;
+  height: 44rpx;
+  margin: -2rpx auto 0;
+  border: 4rpx solid #9b6c58;
+  border-radius: 8rpx;
+  background: #fff3e7;
+}
+
+.hero-field {
+  position: absolute;
+  right: -20rpx;
+  bottom: -10rpx;
+  display: flex;
+  gap: 14rpx;
+  transform: rotate(-9deg);
+}
+
+.hero-field view {
+  width: 34rpx;
+  height: 118rpx;
+  border-radius: 999rpx;
+  background: linear-gradient(#dfead7, #8fb996);
+  opacity: 0.78;
+}
+
+.timer {
+  margin: 26rpx 0 12rpx;
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #4d7c54;
+}
+
+.status {
+  flex: 0 0 auto;
+  padding: 8rpx 14rpx;
+  border-radius: 8rpx;
+  background: #eaf3eb;
+  color: #4d7c54;
+  font-size: 24rpx;
+}
+
+.status.mature {
+  background: #f4e4df;
+  color: #b35241;
+}
+
+.status.auto {
+  background: #fff3d8;
+  color: #8a6b2d;
+}
+
+.status.processing {
+  background: #efe7fb;
+  color: #6a548f;
+}
+
+.actions {
+  display: flex;
+  gap: 12rpx;
+  margin-top: 22rpx;
+}
+
+.actions button {
+  flex: 1;
+  min-width: 0;
+}
+
+.auto-button[disabled] {
+  background: #8fb996;
+  color: #fff;
+  opacity: 1;
+}

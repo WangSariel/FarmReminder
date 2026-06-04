@@ -1,0 +1,46 @@
+<view class="page has-custom-tabbar">
+  <view class="section">
+    <view class="title">设置</view>
+    <view class="subtitle">天气加成会加入浇灌或加工减时，不改变作物浇灌间隔。</view>
+  </view>
+
+  <view class="card section">
+    <label class="label">祈愿坛等级</label>
+    <input type="number" value="{{settings.altarLevel}}" data-field="altarLevel" bindinput="onInput" />
+
+    <label class="label">当前天气</label>
+    <picker range="{{weatherNames}}" value="{{weatherIndex}}" bindchange="onWeatherChange">
+      <view>{{weatherNames[weatherIndex]}}</view>
+    </picker>
+
+    <view class="switch-row">
+      <view>
+        <view class="label inline-label">默认男主浇灌</view>
+        <view class="subtitle">打开后，首页首次浇灌会按男主额外 4% 计算。</view>
+      </view>
+      <switch checked="{{settings.defaultUseHero}}" bindchange="onHeroChange" />
+    </view>
+
+    <view class="switch-row">
+      <view>
+        <view class="label inline-label">默认男主加工</view>
+        <view class="subtitle">打开后，加工任务会减少 16% 加工时间。</view>
+      </view>
+      <switch checked="{{settings.defaultUseHeroProcessing}}" bindchange="onHeroProcessingChange" />
+    </view>
+
+    <view class="bonus-list">
+      <view wx:for="{{bonuses}}" wx:key="key" class="row bonus-row">
+        <view>{{item.name}} · {{item.targetCategory}}</view>
+        <view>{{item.percentText}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card section">
+    <label class="label">订阅模板 ID</label>
+    <input value="{{settings.templateId}}" data-field="templateId" bindinput="onInput" placeholder="成熟和加工完成提醒模板 ID" />
+
+    <button class="primary submit" bindtap="saveSettings">保存设置</button>
+  </view>
+</view>

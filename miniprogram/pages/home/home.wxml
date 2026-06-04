@@ -1,0 +1,55 @@
+<view class="page has-custom-tabbar">
+  <view class="farm-hero section">
+    <view class="hero-cloud cloud-a"></view>
+    <view class="hero-house">
+      <view class="roof"></view>
+      <view class="house-body"></view>
+    </view>
+    <view class="hero-field">
+      <view></view>
+      <view></view>
+      <view></view>
+    </view>
+    <view class="hero-copy">
+      <view class="title">农场提醒</view>
+      <view class="subtitle">{{weather.name}} · 祈愿坛 {{settings.altarLevel}} 级 · 加成 {{weatherBonusText}}</view>
+      <view class="subtitle">默认：{{wateringModeText}} · {{processingModeText}}</view>
+    </view>
+    <button class="hero-refresh" size="mini" bindtap="reload">刷新</button>
+  </view>
+
+  <view wx:if="{{!tasks.length}}" class="card section">
+    <view class="subtitle">还没有任务，去“种植”添加一个作物或加工物。</view>
+  </view>
+
+  <view wx:for="{{tasks}}" wx:key="id" class="card section">
+    <view class="row">
+      <view>
+        <view class="title small-title">{{item.displayName}}</view>
+        <view class="subtitle">{{item.subTitle}}</view>
+      </view>
+      <view class="{{item.isDone ? 'status mature' : item.taskType === 'processing' ? 'status processing' : item.autoEnabled ? 'status auto' : 'status'}}">{{item.statusText}}</view>
+    </view>
+
+    <view class="timer">{{item.remainingText}}</view>
+    <view class="subtitle">{{item.finishLabel}}：{{item.finishAtText}}</view>
+
+    <block wx:if="{{item.taskType === 'planting'}}">
+      <view class="subtitle">{{item.nextWaterLabel}}：{{item.nextWaterText}}</view>
+      <view class="subtitle">单次浇灌减时：{{item.reductionText}}</view>
+      <view class="subtitle">剩余自动浇灌：{{item.autoWateringCountText}}</view>
+    </block>
+
+    <block wx:else>
+      <view class="subtitle">加工减时：{{item.processingRateText}}</view>
+    </block>
+
+    <view class="actions">
+      <block wx:if="{{item.taskType === 'planting'}}">
+        <button wx:if="{{!item.autoEnabled}}" class="primary" size="mini" data-id="{{item.id}}" disabled="{{!item.canWater || item.isDone}}" bindtap="waterPlanting">开始浇灌</button>
+        <button wx:else class="primary auto-button" size="mini" disabled="true">自动浇灌中</button>
+      </block>
+      <button class="ghost danger" size="mini" data-id="{{item.id}}" data-type="{{item.taskType}}" bindtap="removeTask">删除</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,69 @@
+<view class="page has-custom-tabbar">
+  <view class="section">
+    <view class="title">数据管理</view>
+    <view class="subtitle">作物和加工物都按分钟保存，列表按时分秒展示。</view>
+  </view>
+
+  <view class="mode-tabs section">
+    <view class="{{mode === 'crops' ? 'mode-tab active' : 'mode-tab'}}" data-mode="crops" bindtap="setMode">作物</view>
+    <view class="{{mode === 'process' ? 'mode-tab active' : 'mode-tab'}}" data-mode="process" bindtap="setMode">加工物</view>
+  </view>
+
+  <block wx:if="{{mode === 'crops'}}">
+    <view class="card section">
+      <label class="label">作物名称</label>
+      <input value="{{form.name}}" data-field="name" bindinput="onInput" placeholder="例如：甜瓜" />
+
+      <label class="label">分类</label>
+      <picker range="{{categories}}" value="{{categoryIndex}}" bindchange="onCategoryChange">
+        <view>{{categories[categoryIndex]}}</view>
+      </picker>
+
+      <label class="label">基础成熟时间（分钟）</label>
+      <input type="digit" value="{{form.maturityMinutes}}" data-field="maturityMinutes" bindinput="onInput" />
+
+      <label class="label">浇灌间隔（分钟）</label>
+      <input type="digit" value="{{form.wateringCooldownMinutes}}" data-field="wateringCooldownMinutes" bindinput="onInput" />
+
+      <button class="primary submit" bindtap="saveCrop">{{editingId ? "保存作物" : "新增作物"}}</button>
+    </view>
+
+    <view wx:for="{{crops}}" wx:key="id" class="card section">
+      <view class="row">
+        <view>
+          <view class="crop-name">{{item.name}}</view>
+          <view class="subtitle">{{item.category}} · 成熟 {{item.maturityText}} · 间隔 {{item.wateringCooldownText}}</view>
+        </view>
+        <view class="list-actions">
+          <button size="mini" class="ghost" data-id="{{item.id}}" bindtap="editCrop">编辑</button>
+          <button size="mini" class="ghost danger" data-id="{{item.id}}" bindtap="deleteCrop">删除</button>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class="card section">
+      <label class="label">加工物名称</label>
+      <input value="{{processForm.name}}" data-field="name" bindinput="onProcessInput" placeholder="例如：普通饵料" />
+
+      <label class="label">基础加工时长（分钟）</label>
+      <input type="digit" value="{{processForm.processingMinutes}}" data-field="processingMinutes" bindinput="onProcessInput" />
+
+      <button class="primary submit" bindtap="saveProcessItem">{{editingProcessId ? "保存加工物" : "新增加工物"}}</button>
+    </view>
+
+    <view wx:for="{{processItems}}" wx:key="id" class="card section">
+      <view class="row">
+        <view>
+          <view class="crop-name">{{item.name}}</view>
+          <view class="subtitle">加工 {{item.processingText}}</view>
+        </view>
+        <view class="list-actions">
+          <button size="mini" class="ghost" data-id="{{item.id}}" bindtap="editProcessItem">编辑</button>
+          <button size="mini" class="ghost danger" data-id="{{item.id}}" bindtap="deleteProcessItem">删除</button>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

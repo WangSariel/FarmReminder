@@ -1,0 +1,8 @@
+{
+  "name": "light-night-farm-reminder",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "node tests/farm.test.js"
+  }
+}

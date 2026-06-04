@@ -1,0 +1,12 @@
+node_modules/
+miniprogram_npm/
+
+.DS_Store
+Thumbs.db
+
+project.private.config.json
+*.local
+*.log
+
+.env
+.env.*

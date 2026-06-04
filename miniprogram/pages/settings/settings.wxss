@@ -1,0 +1,25 @@
+.bonus-list {
+  margin-top: 24rpx;
+}
+
+.bonus-row {
+  padding: 12rpx 0;
+  border-top: 1rpx solid #eadfce;
+  font-size: 26rpx;
+}
+
+.switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24rpx;
+  margin-top: 24rpx;
+}
+
+.inline-label {
+  margin-top: 0;
+}
+
+.submit {
+  margin-top: 32rpx;
+}
